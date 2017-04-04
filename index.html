@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link href="bootstrap.min.css" type="text/css" rel="stylesheet"/>
+        <link href="main.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        <p id="trainingStuff"></p>
+        <div class="container jumbotron">
+            <center><h1>Object Oriented Programming Concepts with TypeScript</h1></center>
+        </div>
+        <div class="container">
+            
+            <center><h4 class="p2"><kbd>Data Type and Variable Declaration</kbd></h4></center>
+            <div class="row col-md-12">
+                <div class="desc col-md-6">
+                    <code>
+                        <em>var companyName: string = "Cignex Datamatics";<br>
+                            var noOfEmployees: number = 500;<br>
+                            var canDevelope: boolean = true;<br>
+                            var anything: any = "Cat";<br>
+                            typeof(anything)<br></em>
+                    </code>
+                </div>
+                <div class="col-md-6">
+                    <p class="highlight col-md-12" id="vars"></p>
+                    <p class="highlight col-md-12" style="margin-top: 2%" id="typeof"></p>
+                </div>
+            </div>
+            
+            <center><h4 class="p2"><kbd>Class, Constructors and Object</kbd></h4></center>
+            <div class="row col-md-12">
+                <div class="desc col-md-6"><em><code>
+                class Student {<br>
+                    &nbsp;&nbsp;fullName: string;<br>
+                    &nbsp;&nbsp;firstName: string; lastName: string;<br>
+                    &nbsp;&nbsp;constructor(firstName: string, lastName: string) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.firstName = firstName;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.lastName = lastName;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.fullName = firstName + " " + lastName;<br>
+                    &nbsp;&nbsp;}<br><br>
+                    
+                    &nbsp;&nbsp;greeter() {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return "Hello, " + this.fullName;<br>
+                    &nbsp;&nbsp;}<br>
+                }<br>
+
+                var student = new Student("Nehal", "Soni");
+                </code></em></div><br>
+                <p class="highlight col-md-6" id="constructor"></p>
+            </div>
+            
+            <center><h4 class="p2"><kbd>Abstraction and Inheritance</kbd></h4></center>
+            <div class="row col-md-12">
+                <div class="desc col-md-6">
+                <code>
+                    <em>abstract class Employee {<br>
+  	                    &nbsp;&nbsp;name: string;<br>
+	                    &nbsp;&nbsp;constructor(name: string, experience: number) {<br>
+		                &nbsp;&nbsp;&nbsp;&nbsp;this.name = name;<br>
+	                &nbsp;&nbsp;};<br><br>
+	
+	                &nbsp;&nbsp;abstract defineRole(input : string[]) : void;<br><br>
+	
+	                &nbsp;&nbsp;programmingSkill(technology: string) {<br>
+		            &nbsp;&nbsp;&nbsp;&nbsp;document.wrtie(technology + " is a key skill of " + this.name);<br>
+	            &nbsp;&nbsp;}<br>
+            }<br><br>
+
+            class Developer extends Employee {<br>
+	            &nbsp;&nbsp;constructor(name: string, experience: number) {<br>
+		            &nbsp;&nbsp;&nbsp;&nbsp;super(name, experience);<br>
+	            &nbsp;&nbsp;};<br><br>
+    
+            &nbsp;&nbsp;defineRole(input : string[]): void {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;document.wrtie("<strong>My Role in " + companyName + "<br>&nbsp;&nbsp;&nbsp;&nbsp; is following: </strong>");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;for(let kra of input) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.wrtie(kra);<br> 
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;};<br><br>
+            
+            &nbsp;&nbsp;programmingSkill() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;super.programmingSkill("Angular JS");<br>
+            &nbsp;&nbsp;}<br>
+        }<br><br>
+
+        class ProgramManager extends Employee {<br><br>
+
+        }<br></em>
+                </code></div><br>
+            <p id="abstract" class="highlight col-md-6"></p>
+            </div>
+            <center><h4 class="p2"><kbd>Method Overloading</kbd></h4></center>
+            <div class="row col-md-12">
+                <div class="desc">
+                <code>
+                    <em>function reverse(input: string): void;<br><br>
+
+function reverse(input: number[]): void;<br><br>
+
+function reverse(input: any) {<br><br>
+
+	&nbsp;&nbsp;if(typeof input == "string") {<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;var output = input.split("").reverse().join("");<br>
+	&nbsp;&nbsp;}<br><br>
+    
+	&nbsp;&nbsp;if(input instanceof Array) {<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;var array: number[] = [];<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;var len = input.length;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;for(var i = 0; i < input.length; i++) {<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array.push(input[--len]);<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+	&nbsp;&nbsp;}<br>
+}<br>
+
+reverse("string");<br>
+
+reverse([3, 4, 5]);<br></em>
+                </code>
+            </div>
+            <p id="overload" class="highlight col-md-6"></p>
+        </div>
+        
+        <center><h4 class="p2"><kbd>Interface</kbd></h4></center>
+        <div class="row col-md-12">
+            <div class="desc col-md-6">
+                <code>
+                    <em>interface Shape {<br>
+                        &nbsp;&nbsp;calculateArea(): void;<br>
+                        &nbsp;&nbsp;getPerimeter(): number;<br>
+                    }<br><br>
+                    
+                    // Implementation of Interface<br>
+                    class Circle implements Shape {<br>
+	&nbsp;&nbsp;radius: number;<br>
+	&nbsp;&nbsp;constructor(radius: number) {<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;this.radius = radius;<br>
+	&nbsp;&nbsp;}<br><br>
+	
+	&nbsp;&nbsp;calculateArea (): void {<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;document.write("Area of Circle is ");<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;document.write(PI * this.radius ** 2);<br>
+	&nbsp;&nbsp;}<br>
+}<br>
+                    </em>
+                </code>
+            </div>
+            <p id="interface" class="highlight col-md-6"></p>
+        </div>
+        
+        <center><h4 class="p2"><kbd>Access Modifiers - Public and Private</kbd></h4></center>
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <div class="desc">
+                    <code>
+                        <em>class AnimalPublic {<br>
+                            &nbsp;&nbsp;public name: string;<br>
+                            &nbsp;&nbsp;public constructor(theName: string) { this.name = theName; }<br>
+                            &nbsp;&nbsp;public move(distanceInMeters: number) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;document.write(`${this.name} moved ${distanceInMeters}m.`);<br>
+                            &nbsp;&nbsp;}<br>
+                        }<br><br>
+                        new AnimalPublic("Sloth").move(5);</em>
+                    </code>
+                </div>
+                <p id="public" class="highlight mt-3"></p>
+            </div>
+            <div class="col-md-6">
+                <div class="desc">
+                    <code>
+                        <em>class AnimalPrivate {<br>
+    &nbsp;&nbsp;private name: string;<br>
+    &nbsp;&nbsp;constructor(theName: string) { this.name = theName; }<br>
+}<br><br>
+
+new AnimalPrivate("Cat").name; // Error</em>
+                    </code>
+                </div><br><br>
+                <p id="private" class="highlight mt-3"><strong>Error: </strong>Property 'name' is private and only accessibl
+e within class 'AnimalPrivate'.</p>
+            </div>
+        </div>
+
+        <center><h4 class="p2"><kbd>Access Modifiers - Protected and ReadOnly</kbd></h4></center>
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <div class="desc">
+                    <code>
+                        <em>class Person {<br>
+    &nbsp;&nbsp;protected name: string;<br>
+    &nbsp;&nbsp;constructor(name: string) { this.name = name; }<br>
+}<br><br>
+
+class EmployeeNew extends Person {<br>
+    &nbsp;&nbsp;private department: string;<br><br>
+
+    &nbsp;&nbsp;constructor(name: string, department: string) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;super(name);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.department = department;<br>
+    &nbsp;&nbsp;}<br><br>
+
+    &nbsp;&nbsp;public getElevatorPitch() {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;return `Hello, my name is ${this.name} and I work in ${this.department}.`;<br>
+    &nbsp;&nbsp;}<br>
+}<br><br>
+
+let nehal = new EmployeeNew("Nehal", "Liferay");<br>
+console.log(nehal.name); // error</em>
+                    </code>
+                </div>
+                <p id="protected" class="highlight mt-3"></p>
+            </div>
+            <div class="col-md-6">
+                <div class="desc">
+                    <code>
+                        <em>class Octopus {<br>
+    &nbsp;&nbsp;readonly name: string;<br>
+    &nbsp;&nbsp;readonly numberOfLegs: number = 8;<br><br>
+    &nbsp;&nbsp;constructor (theName: string) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.name = theName;<br>
+    &nbsp;&nbsp;}<br><br>
+}<br><br>
+let oct = new Octopus("Man with the 8 strong legs");<br><br>
+oct.name = "Man with the 3-piece suit"; // error! name is readonly.</em>
+                    </code>
+                </div><br><br><br><br><br><br><br>
+                <p id="readonly" class="highlight mt-3"><strong>Error: </strong> assign to 'name' because it is a constant or a read-only property.</p>
+            </div>
+        </div>
+
+        <center><h4 class="p2"><kbd>Static Keyword</kbd></h4></center>
+        <div class="row col-md-12">
+            <div class="desc col-md-6">
+                <code>
+                    <em>class StudentStatic{<br>
+	&nbsp;&nbsp;rollno: number;<br>
+	&nbsp;&nbsp;name: string;<br>
+	&nbsp;&nbsp;static college:string = "VGEC";<br><br>
+     
+	&nbsp;&nbsp;constructor(r: number, n: string){<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;this.rollno = r;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;this.name = n;<br>
+	&nbsp;&nbsp;}<br><br>
+	
+	&nbsp;&nbsp;display() {<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;document.write(this.rollno + " " + this.name + " " + StudentStatic.college);<br>
+	&nbsp;&nbsp;}<br>
+}<br><br>
+
+ let s1 = new StudentStatic(111, "Stephen");<br>
+ let s2 = new StudentStatic(222, "Micheal");<br>
+ s1.display();<br>
+ s2.display();<br></em>
+                </code>
+            </div>
+            <p id="static" class="highlight col-md-6"></p>
+        </div>
+        
+    </div>
+    
+    <script src="jquery.min.js"></script>
+    <script src="training.js"></script>
+    </body>
+</html>
