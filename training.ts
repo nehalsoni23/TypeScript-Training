@@ -25,9 +25,15 @@ class Student {
     greeter() {
 		return "Hello, " + this.fullName + "<br/>";
     }
+
+	static test(): string {
+		return "This is static method";
+	}
 }
 
 var student = new Student("Nehal", "Soni");
+console.log(student);
+// student.test(); // Connot access static member with object
 document.getElementById("constructor").innerHTML = student.greeter() + "<br/>";
 
 // Abstract Class, super, inheritance, overriding
@@ -133,6 +139,8 @@ class Square implements Shape {
 }
 
 var square = new Square(10);
+console.log("Sqaure inherited from Shape:");
+console.log(square);
 square.calculateArea();
 
 // Access Modifiers
@@ -206,3 +214,17 @@ class StudentStatic{
  let s2 = new StudentStatic(222, "Micheal");
  s1.display();
  s2.display();
+
+//  class Test {
+//     fullName: string;
+// 	firstName: string; lastName: string;
+//     constructor(firstName: string, lastName: string) {
+//         this.firstName = firstName;
+// 		this.lastName = lastName;
+// 		this.fullName = firstName + " " + lastName;
+//     }
+    
+//     static greeter() {
+// 		return "Hello, " + this.fullName + "<br/>";
+//     }
+// }

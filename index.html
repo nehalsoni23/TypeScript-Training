@@ -24,8 +24,8 @@
                     </code>
                 </div>
                 <div class="col-md-6">
-                    <p class="highlight col-md-12" id="vars"></p>
-                    <p class="highlight col-md-12" style="margin-top: 2%" id="typeof"></p>
+                    <p class="highlight col-md-11" id="vars"></p>
+                    <p class="highlight col-md-11" style="margin-top: 2%" id="typeof"></p>
                 </div>
             </div>
             
@@ -48,7 +48,7 @@
 
                 var student = new Student("Nehal", "Soni");
                 </code></em></div><br>
-                <p class="highlight col-md-6" id="constructor"></p>
+                <p class="highlight col-md-5" id="constructor"></p>
             </div>
             
             <center><h4 class="p2"><kbd>Abstraction and Inheritance</kbd></h4></center>
@@ -89,7 +89,7 @@
 
         }<br></em>
                 </code></div><br>
-            <p id="abstract" class="highlight col-md-6"></p>
+            <p id="abstract" class="highlight col-md-5"></p>
             </div>
             <center><h4 class="p2"><kbd>Method Overloading</kbd></h4></center>
             <div class="row col-md-12">
@@ -119,7 +119,7 @@ reverse("string");<br>
 reverse([3, 4, 5]);<br></em>
                 </code>
             </div>
-            <p id="overload" class="highlight col-md-6"></p>
+            <p id="overload" class="highlight col-md-5"></p>
         </div>
         
         <center><h4 class="p2"><kbd>Interface</kbd></h4></center>
@@ -146,7 +146,7 @@ reverse([3, 4, 5]);<br></em>
                     </em>
                 </code>
             </div>
-            <p id="interface" class="highlight col-md-6"></p>
+            <p id="interface" class="highlight col-md-5"></p>
         </div>
         
         <center><h4 class="p2"><kbd>Access Modifiers - Public and Private</kbd></h4></center>
@@ -254,8 +254,100 @@ oct.name = "Man with the 3-piece suit"; // error! name is readonly.</em>
  s2.display();<br></em>
                 </code>
             </div>
-            <p id="static" class="highlight col-md-6"></p>
+            <p id="static" class="highlight col-md-5"></p>
         </div>
+        
+        <center><h4 class="p2"><kbd>Dependecy Injection Prototype</kbd></h4></center>
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <div class="desc">
+                    <code>
+                        <em>class Car {<br>
+                                &nbsp;&nbsp;constructor() {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;this.engine = new Engine();<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;this.tires = Tires.getInstance();<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;this.doors = Doors.getInstance();<br>
+                                &nbsp;&nbsp;}<br>
+                                }</em>
+                    </code>
+                </div>
+                <p class="highlight mt-3">Engine object is created using the Engine constructor, Tires and Doors seems to be a singleton interface.</p>
+            </div>
+            <div class="col-md-6">
+            <div class="desc">
+                <code>
+                    <em>class Car {<br>
+  &nbsp;&nbsp;constructor(engine, tires, doors) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;this.engine = engine;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;this.tires = tires;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;this.doors = doors;<br>
+  &nbsp;&nbsp;}<br>
+}</em>
+                </code>
+            </div>
+            <p class="highlight mt-3">All we did is we moved the dependency creation out of the constructor and extended the constructor function to expect all needed dependencies.</p>
+        </div>
+        </div>
+        <br><br>
+
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <div class="desc">
+                    <code>
+                        <em>var car = new Car(<br>
+                            &nbsp;&nbsp;new MockEngine(),<br>
+                            &nbsp;&nbsp;new MockTires(),<br>
+                            &nbsp;&nbsp;new MockDoors()<br>
+                            );</em>
+                    </code>
+                </div><br><br><br><br>
+                <p id="dpinj3" class="highlight mt-3">This is <strong>Dependency Injection</strong>. To be a bit more specific (Constructor Injection).</p>
+            </div>
+            <div class="col-md-6">
+                <div class="desc">
+                    <code>
+                        <em>function main() {<br>
+                                &nbsp;&nbsp;var engine = new Engine();<br>
+                                &nbsp;&nbsp;var tires = new Tires();<br>
+                                &nbsp;&nbsp;var doors = new Doors();<br>
+                                &nbsp;&nbsp;var car = new Car(engine, tires, doors);<br><br>
+
+                                &nbsp;&nbsp;car.drive();<br>
+                                }</em>
+                    </code>
+                </div>
+                <p id="dpinj4" class="highlight mt-3">Here, we moved the responsibility of dependency creation to a higher level. So our new problem is, Who takes care of assembling all those dependencies for us?</p>
+            </div>
+        </div><br><br>
+
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <div class="desc">
+                    <code>
+                        <em>class Car {<br>
+                            ...<br>
+                            }<br><br>
+
+                            Car.$inject = ['Engine', 'Tires', 'Doors'];</em>
+                    </code>
+                </div><br>
+                <p class="highlight mt-3">Angular JS has it’s own DI system which allows us to annotate services and other components and let the injector find out, what dependencies need to be instantiated.</p>
+            </div>
+            <div class="col-md-6">
+                <div class="desc">
+                    <code>
+                        <em>var app = angular.module('myApp', []);<br><br>
+                            app.service('Car', Car);<br>
+                            app.service('OtherService', function (Car) {<br> 
+                            &nbsp;&nbsp;// instance of Car available<br>
+                            });</em>
+                    </code>
+                </div>
+                <p class="highlight mt-3">Then, we register our Car as a service and whenever we ask for it, we get a singleton instance of it without needing to care about creating needed dependencies for the car.</p>
+            </div>
+        </div>
+        <br><br>
+
         
     </div>
     

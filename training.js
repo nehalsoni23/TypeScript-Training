@@ -27,9 +27,14 @@ var Student = (function () {
     Student.prototype.greeter = function () {
         return "Hello, " + this.fullName + "<br/>";
     };
+    Student.test = function () {
+        return "This is static method";
+    };
     return Student;
 }());
 var student = new Student("Nehal", "Soni");
+console.log(student);
+// student.test(); // Connot access static member with object
 document.getElementById("constructor").innerHTML = student.greeter() + "<br/>";
 // Abstract Class, super, inheritance, overriding
 var abstract = $("#abstract");
@@ -110,6 +115,8 @@ var Square = (function () {
     return Square;
 }());
 var square = new Square(10);
+console.log("Sqaure inherited from Shape:");
+console.log(square);
 square.calculateArea();
 // Access Modifiers
 var AnimalPublic = (function () {
@@ -177,3 +184,15 @@ var s1 = new StudentStatic(111, "Stephen");
 var s2 = new StudentStatic(222, "Micheal");
 s1.display();
 s2.display();
+//  class Test {
+//     fullName: string;
+// 	firstName: string; lastName: string;
+//     constructor(firstName: string, lastName: string) {
+//         this.firstName = firstName;
+// 		this.lastName = lastName;
+// 		this.fullName = firstName + " " + lastName;
+//     }
+//     static greeter() {
+// 		return "Hello, " + this.fullName + "<br/>";
+//     }
+// } 
