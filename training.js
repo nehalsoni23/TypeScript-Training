@@ -44,7 +44,7 @@ var Employee = (function () {
     }
     ;
     Employee.prototype.programmingSkill = function (technology) {
-        abstract.append(technology + " is a key skill of " + this.name);
+        abstract.append("<br>" + technology + " is a key skill of " + this.name);
     };
     return Employee;
 }());
@@ -86,7 +86,7 @@ function reverse(input) {
         for (var i = 0; i < input.length; i++) {
             array.push(input[--len]);
         }
-        overload.append("Reverse of given array " + input + " is " + array + "<br/><br/>");
+        overload.append("<br>Reverse of given array " + input + " is " + array + "<br/><br/>");
     }
 }
 reverse("string");
@@ -110,7 +110,7 @@ var Square = (function () {
         this.length = length;
     }
     Square.prototype.calculateArea = function () {
-        int.append("Area of Square is: " + (4 * this.length));
+        int.append("<br>Area of Square is: " + (4 * this.length));
     };
     return Square;
 }());

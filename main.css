@@ -16,6 +16,19 @@
     margin: auto;
 }
 
+#footer {
+    background: #222;
+    color: #676767;
+    font-family: ProximaNova,helvetica,sans-serif;
+    font-size: 15px;
+    height: 2em;
+}
+
+#footer span {
+    color: #fff;
+    padding: 0 10px;
+}
+
 .p2 {
     padding: 2%;
 }

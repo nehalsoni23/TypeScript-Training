@@ -47,7 +47,7 @@ abstract class Employee {
 	abstract defineRole(input : string[]) : void;
 	
 	programmingSkill(technology: string) {
-		abstract.append(technology + " is a key skill of " + this.name);
+		abstract.append("<br>" + technology + " is a key skill of " + this.name);
 	}
 }
 
@@ -96,7 +96,7 @@ function reverse(input: any) {
 		for(var i = 0; i < input.length; i++) {
 			array.push(input[--len]);
 		}
-		overload.append("Reverse of given array " + input + " is " + array + "<br/><br/>");
+		overload.append("<br>Reverse of given array " + input + " is " + array + "<br/><br/>");
 	}
 }
 
@@ -134,7 +134,7 @@ class Square implements Shape {
 	}
 
 	calculateArea (): void {
-		int.append("Area of Square is: " + (4 * this.length));
+		int.append("<br>Area of Square is: " + (4 * this.length));
 	}
 }
 
